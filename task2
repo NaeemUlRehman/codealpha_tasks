@@ -1,0 +1,35 @@
+def tracker():
+    prices = {
+        "AAPL": 180,
+        "TSLA": 250,
+        "GOOGL": 2700,
+        "AMZN": 3300,
+        "MSFT": 300
+    }
+
+    total = 0
+    data = ""
+
+    print("Type 'done' to finish.\n")
+
+    while True:
+        name = input("Stock name: ").upper()
+        if name == "DONE":
+            break
+        if name in prices:
+            qty = input("Quantity: ")
+            if qty.isdigit():
+                qty = int(qty)
+                value = prices[name] * qty
+                total += value
+                data += name + " x " + str(qty) + " = $" + str(value) + "\n"
+            else:
+                print("Enter a valid number.")
+        else:
+            print("Stock not found.")
+
+    print("\n--- Summary ---")
+    print(data)
+    print("Total: $", total)
+
+tracker()
